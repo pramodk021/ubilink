@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.ubilink.model.Peoplestatustype" table="peoplestatustype" catalog="ubilink_test_db">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="statusType" type="string">
+            <column name="StatusType" length="45">
+                <comment>Pending For Approval/Friend/Rejected/Unfriend</comment>
+            </column>
+        </property>
+        <set name="mappeoples" table="mappeople" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="StatusTypeId" />
+            </key>
+            <one-to-many class="com.ubilink.model.Mappeople" />
+        </set>
+    </class>
+</hibernate-mapping>

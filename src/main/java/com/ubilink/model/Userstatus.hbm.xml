@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.ubilink.model.Userstatus" table="userstatus" catalog="ubilink_test_db">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="status" type="string">
+            <column name="status" length="45" not-null="true" />
+        </property>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userStatusId" />
+            </key>
+            <one-to-many class="com.ubilink.model.User" />
+        </set>
+    </class>
+</hibernate-mapping>

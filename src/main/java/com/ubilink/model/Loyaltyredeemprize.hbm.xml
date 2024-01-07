@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 Apr, 2014 4:44:11 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.ubilink.model.Loyaltyredeemprize" table="loyaltyredeemprize" catalog="ubilink_test_db">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="loyaltyRedeemPrize" type="string">
+            <column name="LoyaltyRedeemPrize" length="500" />
+        </property>
+        <property name="createdOn" type="timestamp">
+            <column name="CreatedOn" length="19" />
+        </property>
+        <property name="createdBy" type="java.lang.Integer">
+            <column name="CreatedBy" />
+        </property>
+        <property name="updatedOn" type="timestamp">
+            <column name="UpdatedOn" length="19" />
+        </property>
+        <property name="updatedBy" type="java.lang.Integer">
+            <column name="UpdatedBy" />
+        </property>
+    </class>
+</hibernate-mapping>

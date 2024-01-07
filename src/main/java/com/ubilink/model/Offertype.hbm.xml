@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.ubilink.model.Offertype" table="offertype" catalog="ubilink_test_db">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="type" type="string">
+            <column name="type" length="45" not-null="true" />
+        </property>
+        <set name="offers" table="offer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="offerTypeId" />
+            </key>
+            <one-to-many class="com.ubilink.model.Offer" />
+        </set>
+    </class>
+</hibernate-mapping>

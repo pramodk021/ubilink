@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.ubilink.model.Placecategory" table="placecategory" catalog="ubilink_test_db">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="category" type="string">
+            <column name="category" length="45" not-null="true" />
+        </property>
+        
+         <property name="displayCategory" type="string">
+            <column name="displayCategory" length="100" not-null="false" />
+        </property>
+        
+        <property name="categoryImg" type="blob">
+            <column name="categoryImg" />
+        </property>
+        <property name="isApplicable" type="java.lang.Boolean">
+            <column name="IsApplicable" />
+        </property>
+        <set name="mapplacecategory" table="mapplacecategory" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="placecategoryId" />
+            </key>
+            <one-to-many class="com.ubilink.model.Mapplacecategory" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 Apr, 2014 4:44:11 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.ubilink.model.Couponstatus" table="couponstatus" catalog="ubilink_test_db">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="status" type="string">
+            <column name="status" length="45" not-null="true" />
+        </property>
+        <set name="coupons" table="coupon" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="statusId" not-null="true" />
+            </key>
+            <one-to-many class="com.ubilink.model.Coupon" />
+        </set>
+    </class>
+</hibernate-mapping>

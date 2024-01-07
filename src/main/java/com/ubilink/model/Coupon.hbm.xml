@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.ubilink.model.Coupon" table="coupon" catalog="ubilink_test_db">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="offer" class="com.ubilink.model.Offer" fetch="select">
+            <column name="offerId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="couponstatus" class="com.ubilink.model.Couponstatus" fetch="select">
+            <column name="statusId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="com.ubilink.model.User" fetch="select">
+            <column name="userId" />
+        </many-to-one>
+        <property name="code" type="string">
+            <column name="code" length="45" not-null="true" />
+        </property>
+        <set name="mapusercoupons" table="mapusercoupon" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="couponId" not-null="true" />
+            </key>
+            <one-to-many class="com.ubilink.model.Mapusercoupon" />
+        </set>
+    </class>
+</hibernate-mapping>

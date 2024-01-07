@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.ubilink.model.Offer" table="offer" catalog="ubilink_test_db">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="offertype" class="com.ubilink.model.Offertype" fetch="select">
+            <column name="offerTypeId" />
+        </many-to-one>
+        <many-to-one name="offerstatus" class="com.ubilink.model.Offerstatus" fetch="select">
+            <column name="offerStatusId" />
+        </many-to-one>
+        <many-to-one name="productcategory" class="com.ubilink.model.Productcategory" fetch="select">
+            <column name="productCategoryId" />
+        </many-to-one>
+        <many-to-one name="place" class="com.ubilink.model.Place" fetch="select">
+            <column name="placeId" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="100" not-null="true" />
+        </property>
+       
+        <property name="validity" type="timestamp">
+            <column name="validity" length="19" />
+        </property>
+        <property name="validFrom" type="timestamp">
+            <column name="validFrom" length="19" />
+        </property>
+       
+        <property name="productName" type="string">
+            <column name="productName" length="100" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="500" />
+        </property>
+        <property name="imgFile" type="blob">
+            <column name="imgFile" />
+        </property>
+        <property name="createdOn" type="timestamp">
+            <column name="CreatedOn" length="19" />
+        </property>
+        <property name="createdBy" type="java.lang.Integer">
+            <column name="CreatedBy" />
+        </property>
+        <property name="updatedOn" type="timestamp">
+            <column name="UpdatedOn" length="19" />
+        </property>
+        <property name="updatedBy" type="java.lang.Integer">
+            <column name="UpdatedBy" />
+        </property>
+        <property name="isActive" type="java.lang.Boolean">
+            <column name="IsActive" />
+        </property>
+        <set name="coupons" table="coupon" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="offerId" not-null="true" />
+            </key>
+            <one-to-many class="com.ubilink.model.Coupon" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.ubilink.model.Setting" table="setting" catalog="ubilink_test_db">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usermode" class="com.ubilink.model.Usermode" fetch="select">
+            <column name="userModeId" />
+        </many-to-one>
+        <many-to-one name="user" class="com.ubilink.model.User" fetch="select">
+            <column name="userId" not-null="true" />
+        </many-to-one>
+        <property name="isNotificationActive" type="java.lang.Boolean">
+            <column name="isNotificationActive" />
+        </property>
+    </class>
+</hibernate-mapping>

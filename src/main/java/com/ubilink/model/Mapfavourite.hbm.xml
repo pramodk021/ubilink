@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 Apr, 2014 4:44:11 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.ubilink.model.Mapfavourite" table="mapfavourite" catalog="ubilink_test_db">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="favoritetype" class="com.ubilink.model.Favoritetype" fetch="select">
+            <column name="favouriteTypeId" />
+        </many-to-one>
+        <many-to-one name="user" class="com.ubilink.model.User" fetch="select">
+            <column name="userId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="reminder" class="com.ubilink.model.Reminder" fetch="select">
+            <column name="reminderId" />
+        </many-to-one>
+        <property name="mapFavouriteEntityId" type="java.lang.Integer">
+            <column name="mapFavouriteEntityId" />
+        </property>
+        <property name="isActive" type="boolean">
+            <column name="isActive" not-null="true" />
+        </property>
+        <property name="isReminderActivated" type="java.lang.Boolean">
+            <column name="isReminderActivated" />
+        </property>
+        <property name="createdOn" type="timestamp">
+            <column name="CreatedOn" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>
